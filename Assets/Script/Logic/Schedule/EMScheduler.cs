@@ -24,6 +24,18 @@ namespace Schedule
 
 				return list;
 			}
+			public EMSchedule Get ( EMScheduleType p_Type, int p_ID )
+			{
+				List<EMSchedule> list = Get (p_Type);
+
+				foreach(EMSchedule schedule in list)
+				{
+					if(schedule.ID == p_ID)
+						return schedule;
+				}
+
+				return null;
+			}
 			//-Set-
 			private void Set ( EMScheduleType p_Type, EMSchedule p_Schedule )
 			{
@@ -56,17 +68,28 @@ namespace Schedule
 			return m_Data.Get (p_Type);
 		}
 
+		public EMSchedule GetSchedule ( EMScheduleType p_Type, int p_ID )
+		{
+			return m_Data.Get (p_Type, p_ID);
+		}
+
+		private EMSchedule[] m_Schedule;
+
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
 		public void Init()
 		{
-
+			m_Data = new EMDataSchedule ();
+			m_Schedule = new EMSchedule[3];
 		}
 
 		public void DataSetting_Temp ()
 		{
-			m_Data = new EMDataSchedule ();
+			if(m_Data == null)
+			{
+				m_Data = new EMDataSchedule ();
+			}
 			
 			// EMScheduleType.STUDY
 			m_Data.Set(MakeData_Temp(1000, EMScheduleType.STUDY, 1, false));
@@ -138,9 +161,9 @@ namespace Schedule
 		/// 스케쥴 3개를 등록하고 스케쥴 생성
 		/// </summary>
 		/// <param name="schedule">선택한 스케쥴 3개를 받는다</param>
-		public void RegisterSchedule (object p_Schedules)
+		public void RegisterSchedule (int p_Order, EMSchedule p_Schedules)
 		{
-			
+			m_Schedule [p_Order] = p_Schedules;
 		}
 		
 		/// <summary>

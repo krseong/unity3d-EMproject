@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 28b5656ecf0540948abeb1f90127d843
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - audioClip: {fileID: 8300000, guid: 76218f99e7130334bbabc49674f288bd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
