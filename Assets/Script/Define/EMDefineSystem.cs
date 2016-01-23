@@ -3,6 +3,12 @@ using System.Collections;
 
 namespace Define
 {
+	public enum EMGameProcess
+	{
+		START,
+		SAMPLE,
+	}
+
 	public enum EMResultType
 	{
 		SIMULATION,

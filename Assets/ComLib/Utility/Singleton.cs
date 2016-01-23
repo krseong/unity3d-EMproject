@@ -51,6 +51,13 @@ namespace ComLib
 	            
 	            return _instance;
 	        }
+			set
+			{
+				if(value != null)
+					return;
+
+				_instance = value;
+			}
 	    }
 	}
 }
