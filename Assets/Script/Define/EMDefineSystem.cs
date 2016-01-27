@@ -7,6 +7,7 @@ namespace Define
 	{
 		START,
 		SAMPLE,
+		NULL,
 	}
 
 	public enum EMResultType

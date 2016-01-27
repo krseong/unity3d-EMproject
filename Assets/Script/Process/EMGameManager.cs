@@ -3,11 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using ComLib;
 
-public class GameManager : Singleton<GameManager>
+public class EMGameManager : Singleton<EMGameManager>
 {
 	private EMDataMgr m_DataMgr = new EMDataMgr();
 	private Dictionary<int, ComFSMEntity<EMDataMgr>> m_ProcessDic;
 	private ComFSMEntity<EMDataMgr> m_CurProcess = null;
+
+	public Define.EMGameProcess GetCurProcess ()
+	{
+		if(m_DataMgr != null)
+		{
+			return m_DataMgr.GetProcess();
+		}
+		return Define.EMGameProcess.NULL;
+	}
 
 	public bool OnInit ()
 	{
@@ -22,7 +31,7 @@ public class GameManager : Singleton<GameManager>
 
 	private void OnRegister ()
 	{
-		if(m_ProcessDic != null)
+		if(m_ProcessDic == null)
 		{
 			m_ProcessDic = new Dictionary<int, ComFSMEntity<EMDataMgr>>();
 		}
@@ -33,9 +42,7 @@ public class GameManager : Singleton<GameManager>
 
 	private void SetStartProcess ()
 	{
-		m_DataMgr.Process = Define.EMGameProcess.START;
-
-		ChangeProcess (m_DataMgr.Process);
+		ChangeProcess (m_DataMgr.SetProcess(Define.EMGameProcess.START));
 	}
 
 	public void ChangeProcess ( Define.EMGameProcess p_Process )
@@ -50,7 +57,7 @@ public class GameManager : Singleton<GameManager>
 		{
 			m_CurProcess.OnExit(m_DataMgr);
 		}
-		m_CurProcess = m_ProcessDic [(int)p_Process];
+		m_CurProcess = m_ProcessDic [(int)m_DataMgr.SetProcess(p_Process)];
 
 		m_CurProcess.OnEnter (m_DataMgr);
 	}

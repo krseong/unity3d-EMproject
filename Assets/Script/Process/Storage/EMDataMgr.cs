@@ -6,9 +6,14 @@ public class EMDataMgr
 	private EMGameDocument m_GameDocument = new EMGameDocument();
 
 	private int m_ProcessState;
-	public Define.EMGameProcess Process
+	public Define.EMGameProcess GetProcess ()
 	{
-		get{ return (Define.EMGameProcess)m_ProcessState; }
-		set{ m_ProcessState = (int)value; }
+		return (Define.EMGameProcess)m_ProcessState;
+	}
+	public Define.EMGameProcess SetProcess ( Define.EMGameProcess p_ProcessState )
+	{
+		m_ProcessState = (int)p_ProcessState;
+
+		return GetProcess();
 	}
 }
