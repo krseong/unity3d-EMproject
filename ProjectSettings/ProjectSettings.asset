@@ -154,7 +154,7 @@ PlayerSettings:
   flashStrippingLevel: 2
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    7: _Log_
+    7: _Log_;_Sample_
   metroPackageName: Test_odbc
   metroPackageLogo: 
   metroPackageLogo140: 

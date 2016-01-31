@@ -36,6 +36,7 @@ public class EMMain : MonoBehaviour {
 	{
 		if(Input.GetKeyUp(KeyCode.N))
 		{
+			/*
 			if(EMGameManager.Instance.GetCurProcess() == EMGameProcess.START)
 			{
 				EMGameManager.Instance.ChangeProcess(EMGameProcess.SAMPLE);
@@ -44,6 +45,7 @@ public class EMMain : MonoBehaviour {
 			{
 				EMGameManager.Instance.ChangeProcess(EMGameProcess.START);
 			}
+			*/
 		}
 	}
 #endif

@@ -26,6 +26,10 @@ public class EMGameManager : Singleton<EMGameManager>
 
 	public void OnStart ()
 	{
+#if _Sample_
+		SetSampleProcess ();
+		return;
+#endif
 		SetStartProcess ();
 	}
 
@@ -38,6 +42,11 @@ public class EMGameManager : Singleton<EMGameManager>
 
 		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.SAMPLE, new EMGameProcessSample ());
+	}
+
+	private void SetSampleProcess ()
+	{
+		ChangeProcess (m_DataMgr.SetProcess(Define.EMGameProcess.SAMPLE));
 	}
 
 	private void SetStartProcess ()
