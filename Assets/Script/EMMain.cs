@@ -26,11 +26,14 @@ public class EMMain : MonoBehaviour {
 		EMGameManager.Instance.OnUpdate ();
 	}
 
-#if UNITY_EDITOR
+#if _Sample_
 	void OnGUI ()
 	{
 		EMGameManager.Instance.OnGUI ();
 	}
+#endif
+
+#if UNITY_EDITOR
 
 	void LateUpdate ()
 	{
