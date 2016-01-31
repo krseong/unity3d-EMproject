@@ -5,9 +5,10 @@ namespace Define
 {
 	public enum EMGameProcess
 	{
-		START,
-		SAMPLE,
 		NULL,
+		SAMPLE,
+		START,
+		SIMULATION,
 	}
 
 	public enum EMResultType
@@ -24,5 +25,11 @@ namespace Define
 		STUDY,
 		JOB,
 		VACATION,
+	}
+
+	public enum EMUIType
+	{
+		NULL,
+		SIMULATION,
 	}
 }

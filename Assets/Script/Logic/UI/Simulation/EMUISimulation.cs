@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EMUISimulation : MonoBehaviour 
+public class EMUISimulation : EMUIEntity 
 {
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	public UISlider[] m_Schedlues;
 	public UISpriteAnimation[] m_Animation;
 
@@ -35,6 +30,14 @@ public class EMUISimulation : MonoBehaviour
 			{
 				m_Animation [i].enabled = false;
 			}
+		}
+	}
+
+	public override void OnReset ()
+	{
+		foreach(UISlider uiSlider in m_Schedlues)
+		{
+			uiSlider.value = 0.0f;
 		}
 	}
 }

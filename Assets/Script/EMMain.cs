@@ -27,6 +27,11 @@ public class EMMain : MonoBehaviour {
 	}
 
 #if UNITY_EDITOR
+	void OnGUI ()
+	{
+		EMGameManager.Instance.OnGUI ();
+	}
+
 	void LateUpdate ()
 	{
 		TestInput ();

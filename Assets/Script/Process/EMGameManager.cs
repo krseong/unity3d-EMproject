@@ -21,6 +21,12 @@ public class EMGameManager : Singleton<EMGameManager>
 	public bool OnInit ()
 	{
 		OnRegister ();
+
+		foreach(ComFSMEntity<EMDataMgr> fsm in m_ProcessDic.Values)
+		{
+			fsm.OnAwake(m_DataMgr);
+		}
+
 		return true;
 	}
 
@@ -40,8 +46,9 @@ public class EMGameManager : Singleton<EMGameManager>
 			m_ProcessDic = new Dictionary<int, ComFSMEntity<EMDataMgr>>();
 		}
 
-		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
 		m_ProcessDic.Add ((int)Define.EMGameProcess.SAMPLE, new EMGameProcessSample ());
+		m_ProcessDic.Add ((int)Define.EMGameProcess.START, new EMGameProcessStart ());
+		m_ProcessDic.Add ((int)Define.EMGameProcess.SIMULATION, new EMGameProcessSimulation ());
 	}
 
 	private void SetSampleProcess ()
@@ -96,5 +103,16 @@ public class EMGameManager : Singleton<EMGameManager>
 		}
 	}
 
+	public void OnGUI ()
+	{
+		if(GUI.Button(new Rect(310, 10, 70, 70), "Back"))
+		{
+			SetSampleProcess();
+		}
 
+		if(m_CurProcess != null)
+		{
+			m_CurProcess.OnGUI(m_DataMgr);
+		}
+	}
 }
